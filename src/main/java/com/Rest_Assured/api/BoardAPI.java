@@ -27,4 +27,5 @@ public class BoardAPI extends BaseRequest {
                 .extract()
                 .response();
     }
+
 }

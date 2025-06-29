@@ -6,7 +6,8 @@ public class CardAPI extends BaseRequest {
 
     public Response createCard(String name, String idList) {
         return requestSpec()
-                .body("{\"name\":\"" + name + "\", \"idList\":\"" + idList + "\"}")
+                .queryParam("idList", idList)
+                .queryParam("name", name)
                 .when()
                 .post("/cards")
                 .then()
@@ -15,9 +16,10 @@ public class CardAPI extends BaseRequest {
                 .response();
     }
 
+
     public Response updateCard(String cardId, String newName) {
         return requestSpec()
-                .body("{\"name\":\"" + newName + "\"}")
+                .queryParam("name", newName)
                 .when()
                 .put("/cards/" + cardId)
                 .then()
@@ -25,6 +27,7 @@ public class CardAPI extends BaseRequest {
                 .extract()
                 .response();
     }
+
 
     public Response deleteCard(String cardId) {
         return requestSpec()
@@ -35,4 +38,5 @@ public class CardAPI extends BaseRequest {
                 .extract()
                 .response();
     }
+
 }
